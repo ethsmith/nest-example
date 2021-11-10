@@ -14,7 +14,8 @@ import { AuthGuard } from '../auth/auth.guard';
 import { Response } from 'express';
 import { Parser } from 'json2csv';
 import { Order } from './order.entity';
-import { OrderItem } from "./order-item.entity";
+import { OrderItem } from './order-item.entity';
+import { HasPermission } from "../permission/has-permission.decorator";
 
 @UseInterceptors(ClassSerializerInterceptor)
 @UseGuards(AuthGuard)
@@ -23,11 +24,13 @@ export class OrderController {
   constructor(private orderService: OrderService) {}
 
   @Get('orders')
+  @HasPermission('orders')
   async all(@Query('page') page = 1) {
     return this.orderService.paginate(page, ['order_items']);
   }
 
   @Post('export')
+  @HasPermission('orders')
   async export(@Res() response: Response) {
     const parser = new Parser({
       fields: ['ID', 'Name', 'Email', 'Product Title', 'Price', 'Quantity'],
@@ -62,5 +65,11 @@ export class OrderController {
     response.header('Content-Type', 'text/csv');
     response.attachment('orders.csv');
     return response.send(csv);
+  }
+
+  @Get('chart')
+  @HasPermission('orders')
+  async chart() {
+    return this.orderService.chart();
   }
 }

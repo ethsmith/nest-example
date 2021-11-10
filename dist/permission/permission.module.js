@@ -12,11 +12,12 @@ const permission_controller_1 = require("./permission.controller");
 const permission_service_1 = require("./permission.service");
 const typeorm_1 = require("@nestjs/typeorm");
 const permission_entity_1 = require("./permission.entity");
+const common_module_1 = require("../common/common.module");
 let PermissionModule = class PermissionModule {
 };
 PermissionModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([permission_entity_1.Permission])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([permission_entity_1.Permission]), common_module_1.CommonModule],
         controllers: [permission_controller_1.PermissionController],
         providers: [permission_service_1.PermissionService],
     })

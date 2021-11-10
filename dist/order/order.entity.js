@@ -58,7 +58,7 @@ __decorate([
     __metadata("design:paramtypes", [])
 ], Order.prototype, "total", null);
 Order = __decorate([
-    (0, typeorm_1.Entity)('order')
+    (0, typeorm_1.Entity)('orders')
 ], Order);
 exports.Order = Order;
 //# sourceMappingURL=order.entity.js.map

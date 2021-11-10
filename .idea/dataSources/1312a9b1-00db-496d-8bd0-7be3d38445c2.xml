@@ -801,8 +801,8 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     <user id="232" parent="1" name="root">
       <Host>localhost</Host>
     </user>
-    <table id="233" parent="2" name="order"/>
-    <table id="234" parent="2" name="order_items"/>
+    <table id="233" parent="2" name="order_items"/>
+    <table id="234" parent="2" name="orders"/>
     <table id="235" parent="2" name="permissions"/>
     <table id="236" parent="2" name="products"/>
     <table id="237" parent="2" name="role_permissions"/>
@@ -814,71 +814,71 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="241" parent="233" name="first_name">
+    <column id="241" parent="233" name="product_title">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="242" parent="233" name="last_name">
+    <column id="242" parent="233" name="price">
       <Position>3</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="243" parent="233" name="email">
+    <column id="243" parent="233" name="quantity">
       <Position>4</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="244" parent="233" name="created_at">
+    <column id="244" parent="233" name="order_id">
       <Position>5</Position>
-      <DataType>datetime(6)|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>CURRENT_TIMESTAMP(6)</DefaultExpression>
+      <DataType>int(11)|0s</DataType>
     </column>
-    <key id="245" parent="233" name="PRIMARY">
+    <index id="245" parent="233" name="FK_145532db85752b29c57d2b7b1f1">
+      <ColNames>order_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="246" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="246" parent="234" name="id">
+    <foreign-key id="247" parent="233" name="FK_145532db85752b29c57d2b7b1f1">
+      <ColNames>order_id</ColNames>
+      <RefTableName>orders</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="248" parent="234" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="247" parent="234" name="product_title">
+    <column id="249" parent="234" name="first_name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="248" parent="234" name="price">
+    <column id="250" parent="234" name="last_name">
       <Position>3</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="249" parent="234" name="quantity">
+    <column id="251" parent="234" name="email">
       <Position>4</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="250" parent="234" name="order_id">
+    <column id="252" parent="234" name="created_at">
       <Position>5</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>datetime(6)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP(6)</DefaultExpression>
     </column>
-    <index id="251" parent="234" name="FK_145532db85752b29c57d2b7b1f1">
-      <ColNames>order_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="252" parent="234" name="PRIMARY">
+    <key id="253" parent="234" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="253" parent="234" name="FK_145532db85752b29c57d2b7b1f1">
-      <ColNames>order_id</ColNames>
-      <RefTableName>order</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
     <column id="254" parent="235" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>

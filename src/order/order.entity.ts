@@ -8,7 +8,7 @@ import {
 import { OrderItem } from './order-item.entity';
 import { Exclude, Expose } from 'class-transformer';
 
-@Entity('order')
+@Entity('orders')
 export class Order {
   @PrimaryGeneratedColumn()
   id: number;
